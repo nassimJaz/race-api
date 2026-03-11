@@ -29,4 +29,12 @@ public class RunnerService {
                 )
         );
     }
+
+    public Runner createRunner(Runner runner) {
+        return runnerRepository.save(runner);
+    }
+
+    public void deleteRunner(Long id) {
+        runnerRepository.deleteById(id);
+    }
 }
