@@ -1,6 +1,8 @@
 package com.takima.race.runner.controllers;
 
+import com.takima.race.runner.entities.Race;
 import com.takima.race.runner.entities.Runner;
+import com.takima.race.runner.services.RegistrationService;
 import com.takima.race.runner.services.RunnerService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,9 +20,11 @@ import java.util.List;
 @RequestMapping("/runners")
 public class RunnerController {
     private final RunnerService runnerService;
+    private final RegistrationService registrationService;
 
-    public RunnerController(RunnerService runnerService) {
+    public RunnerController(RunnerService runnerService, RegistrationService registrationService) {
         this.runnerService = runnerService;
+        this.registrationService = registrationService;
     }
 
     @GetMapping
@@ -46,6 +50,11 @@ public class RunnerController {
     @PutMapping("/{id}")
     public Runner updateRunner(@PathVariable Long id, @RequestBody Runner runner) {
         return runnerService.updateRunner(id, runner);
+    }
+
+    @GetMapping("/{runnerId}/races")
+    public List<Race> getRaces(@PathVariable Long runnerId) {
+        return registrationService.getRacesOfRunner(runnerId);
     }
 
 }
