@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RunnerRepository extends JpaRepository<Runner, Long> {
 
-    List<Runner> findByFirstName(String firstname);
+    List<Runner> findRunnerByFirstName(String firstname);
 }

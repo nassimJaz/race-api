@@ -37,4 +37,15 @@ public class RunnerService {
     public void deleteRunner(Long id) {
         runnerRepository.deleteById(id);
     }
+
+    public Runner updateRunner(Long id, Runner runner) {
+        Runner runnerBdd = this.getById(id);
+        
+        runnerBdd.setAge(runner.getAge());
+        runnerBdd.setEmail(runner.getEmail());
+        runnerBdd.setFirstName(runner.getFirstName());
+        runnerBdd.setLastName(runner.getLastName());
+
+        return runnerRepository.save(runnerBdd);
+    }
 }
