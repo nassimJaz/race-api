@@ -2,9 +2,9 @@ spring:
   application:
     name: race
   datasource:
-    url: jdbc:postgresql://localhost:5432/race_db
-    username: race
-    password: race
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/race_db}
+    username: ${DATABASE_USER:race}
+    password: ${DATABASE_PASSWORD:race}
   jpa:
     hibernate:
       ddl-auto: validate
