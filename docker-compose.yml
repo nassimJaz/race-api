@@ -5,7 +5,7 @@ services:
   postgres:
     image: postgres:15
     container_name: race_postgres
-    restart: always
+    restart: unless-stop
     environment:
       POSTGRES_USER: race
       POSTGRES_PASSWORD: race
