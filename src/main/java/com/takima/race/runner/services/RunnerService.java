@@ -31,6 +31,13 @@ public class RunnerService {
     }
 
     public Runner createRunner(Runner runner) {
+        // ajouter une vérification @ email
+        if(!runner.getEmail().contains("@")) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                String.format("Email is not valid", runner.getEmail())
+            );
+        }
         return runnerRepository.save(runner);
     }
 
